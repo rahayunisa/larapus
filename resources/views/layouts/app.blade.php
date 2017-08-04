@@ -14,6 +14,8 @@
     <link href="/css/font-awesome.min.css" rel="stylesheet" type='text/css'>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="/css/jquery.dataTables.css" rel="stylesheet">
+    <link href="/css/dataTables.bootstrap.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -41,6 +43,9 @@
                         @if (Auth::check())
                         <li><a href="{{ url('/home') }}"> Dashboard </a></li>
                         @endif
+                        @role('admin')
+                            <li><a href="{{ route('authors.index') }}"> Penulis </a></li>
+                        @endrole
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -75,12 +80,16 @@
             </div>
         </nav>
 
+        @include('layouts._flash')
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/dataTables.bootstrap.css.min.js"></script>
     
+
     @yield('scripts')
 </body>
 </html>
