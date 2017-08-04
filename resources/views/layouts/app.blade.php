@@ -88,7 +88,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="/js/jquery.dataTables.min.js"></script>
     <script src="/js/dataTables.bootstrap.css.min.js"></script>
-    
+    <script src="/js/custom.js"></script>
 
     @yield('scripts')
 </body>

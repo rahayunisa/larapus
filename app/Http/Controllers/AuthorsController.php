@@ -23,7 +23,8 @@ class AuthorsController extends Controller
                 return view('datatable._action', [ 
                     'model'=> $author,
                     'form_url' => route('authors.destroy', $author->id), 
-                    'edit_url'=>route('authors.edit', $author->id), ]);
+                    'edit_url'=>route('authors.edit', $author->id),
+                    'confirm_message'=>'Yakin mau menghapus' . $author->name . '?' ]);
             })->make(true);
         }
 
@@ -115,7 +116,7 @@ class AuthorsController extends Controller
     public function destroy($id)
     {
         //
-        Author::destroy($id);
+        if(!Author::destroy($id)) return redirect()->back();
 
         Session::flash("flash_notification", [
             "level"=>"success",
